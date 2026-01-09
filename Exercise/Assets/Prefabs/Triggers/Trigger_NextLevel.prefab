@@ -10,8 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 281310281289872956, guid: 504a5e3e09789af48917f9d6558f4ddd, type: 3}
       propertyPath: m_MessageToPlayer
-      value: Congratulations ! You reach end of level. \nPress <color=#FBC531><b>Interact</b></color>
-        action to enter the next level.
+      value: Congratulations ! You reach end of level. You <color=#FBC531><b>Won</b></color>, you are part of the <color=#FBC531>0.00001%</color> to have succeeded.
       objectReference: {fileID: 0}
     - target: {fileID: 5952284457275759081, guid: 504a5e3e09789af48917f9d6558f4ddd, type: 3}
       propertyPath: m_Size.x

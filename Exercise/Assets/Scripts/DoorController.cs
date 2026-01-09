@@ -2,7 +2,7 @@
 
 public class DoorController : TriggerController
 {
-    private static readonly string IS_OPEN_PARAMETER = "Knock Knock";
+    private static readonly string IS_OPEN_PARAMETER = "IsOpen";
 
     [SerializeField] private Animator m_Animator;
     [SerializeField] private ItemController m_ItemController;
@@ -24,6 +24,8 @@ public class DoorController : TriggerController
                 UISystem.Instance.ShowPlayerWarning("Door is <b>locked</b>. You need to find the <b>key</b>.");
                 return false;
             }
+
+            InventorySystem.Instance.ConsumeItem(m_ItemController.UniqueID);
         }
 
         m_Animator.SetBool(IS_OPEN_PARAMETER, true);

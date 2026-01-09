@@ -10,8 +10,9 @@ public class UISystem : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
-            throw new System.Exception("An instance of UIManager singleton already exists.");
+            UnityEngine.Debug.LogWarning("An instance of UISystem singleton already exists. Destroying duplicate.");
+            Destroy(gameObject);
+            return;
         }
         else
         {

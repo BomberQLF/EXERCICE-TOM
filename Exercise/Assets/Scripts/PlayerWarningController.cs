@@ -8,12 +8,23 @@ public class PlayerWarningController : MonoBehaviour
 
     private void Awake()
     {
-        m_Container.alpha = 0f;
+        UnityEngine.Assertions.Assert.IsNotNull(m_Container, "PlayerWarningController: m_Container is not assigned.");
+        UnityEngine.Assertions.Assert.IsNotNull(m_Text, "PlayerWarningController: m_Text is not assigned.");
+
+        if (m_Container != null)
+            m_Container.alpha = 0f;
     }
 
     private void Start()
     {
-        UISystem.Instance.PlayerWarningChanged += OnPlayerWarningChanged;
+        if (UISystem.Instance != null)
+        {
+            UISystem.Instance.PlayerWarningChanged += OnPlayerWarningChanged;
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("UISystem instance not found. PlayerWarningController will not receive warning events.");
+        }
     }
 
     private void OnDestroy()
@@ -26,7 +37,10 @@ public class PlayerWarningController : MonoBehaviour
 
     private void OnPlayerWarningChanged(UISystem.Tip tip)
     {
-        m_Text.text = tip.ToString();
-        m_Container.alpha = tip.IsVisible ? 1f : 0f;
+        if (m_Text != null)
+            m_Text.text = tip.ToString();
+
+        if (m_Container != null)
+            m_Container.alpha = tip.IsVisible ? 1f : 0f;
     }
 }

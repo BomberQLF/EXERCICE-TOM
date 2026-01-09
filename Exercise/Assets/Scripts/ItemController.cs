@@ -26,11 +26,24 @@ public class ItemController : TriggerController
 
     private void PickItem()
     {
-        //TODO: Replace this with the correct implementation
-        throw new NotImplementedException("PickItem method is yet not implemented.");
+        // Store the item into the InventorySystem instance (if available)
+        if (InventorySystem.Instance != null)
+        {
+            InventorySystem.Instance.StoreItem(UniqueID);
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("InventorySystem instance not found when picking item.");
+        }
 
-        //TODO: Store the item into the InventorySystem instance
-        //TODO: Disable interaction from Trigger
-        //TODO: Deactivate item GameObject
+        // Deactivate the item GameObject if assigned
+        if (m_Item != null)
+        {
+            m_Item.SetActive(false);
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("Item GameObject is null on ItemController.");
+        }
     }
 }

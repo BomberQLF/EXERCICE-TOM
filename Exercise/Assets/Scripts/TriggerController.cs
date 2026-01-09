@@ -14,6 +14,18 @@ public class TriggerController : MonoBehaviour
     private void Start()
     {
         m_InteractAction = InputSystem.actions.FindAction(INTERACT_ACTION);
+        if (m_InteractAction != null)
+        {
+            m_InteractAction.Enable();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (m_InteractAction != null)
+        {
+            m_InteractAction.Disable();
+        }
     }
 
     private void OnTriggerStay(Collider other)

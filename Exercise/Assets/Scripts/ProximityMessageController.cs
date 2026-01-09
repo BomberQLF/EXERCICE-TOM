@@ -27,6 +27,10 @@ public class ProximityMessageController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        UISystem.Instance.HidePlayerTip();
+        if (other.CompareTag(PLAYER_TAG))
+        {
+            if (UISystem.Instance != null)
+                UISystem.Instance.HidePlayerTip();
+        }
     }
 }

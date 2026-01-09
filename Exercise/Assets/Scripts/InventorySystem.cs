@@ -10,8 +10,9 @@ public class InventorySystem : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
-            throw new System.Exception("An instance of InventoryBehaviour singleton already exists.");
+            UnityEngine.Debug.LogWarning("An instance of InventorySystem singleton already exists. Destroying duplicate.");
+            Destroy(gameObject);
+            return;
         }
         else
         {
